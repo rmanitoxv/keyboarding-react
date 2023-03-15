@@ -1,19 +1,22 @@
-import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import Menu from '../components/Menu'
+import Sidebar from '../components/Sidebar'
 
-export class Root extends PureComponent {
-  render() {
-    return (
-    <div className='h-screen'>
-      <div className='flex flex-col h-full justify-center items-center text-[6rem] text-center'>
-        <p className='pb-12'>
-            Welcome to<br/>TECHNO TYPER 
+function Root() {
+  return (
+    <div className='h-screen bg-mainmenu bg-cover'>
+      <div className='flex flex-col h-full justify-center items-center text-8xl text-center'>
+        <p className='font-neonderthaw'>
+            Welcome to 
         </p>
-        <Link to={`#`}>START</Link> 
+        <p className='font-raleway text-cyan-400 font-bold mb-8'>
+            TECHNO<span className='text-yellow-300'>T</span>YPER
+        </p>
+        <Menu />
+        <Sidebar />
       </div>
     </div>
-    )
-  }
+  )
 }
 
 export default Root

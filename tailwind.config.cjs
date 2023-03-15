@@ -6,7 +6,18 @@ module.exports = {
   ],
   
   theme: {
-    extend: {},
+    fontFamily: {
+      neonderthaw: 'Neonderthaw',
+      raleway: 'Raleway',
+      poppins: 'Poppins'
+      
+    },
+    extend: {
+      backgroundImage: {
+        'mainmenu': "url('/images/background.svg')",
+      }
+    }
+
   },
   plugins: [],
 }
