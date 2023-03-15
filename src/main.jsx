@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
+import Game1 from './routes/Game1';
 
 import Root from './routes/Root';
 
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
   },
+  {
+    path: "/game1",
+    element: <Game1 />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

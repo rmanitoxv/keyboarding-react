@@ -4,8 +4,8 @@ import Sidebar from '../components/Sidebar'
 
 function Root() {
   return (
-    <div className='h-screen bg-mainmenu bg-cover'>
-      <div className='flex flex-col h-full justify-center items-center text-8xl text-center'>
+    <div className='h-screen bg-mainmenu bg-cover relative overflow-hidden'>
+      <div className=' flex flex-col h-full justify-center items-center text-8xl text-center'>
         <p className='font-neonderthaw'>
             Welcome to 
         </p>
