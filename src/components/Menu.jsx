@@ -7,13 +7,13 @@ function Menu() {
   const cancelButtonRef = useRef(null);
   return (
     <div>
-      <button className="shadow-xl font-bold rounded-3xl px-36 py-2 bg-gradient-to-b from-yellow-200 to-orange-400 text-white font-raleway" onClick={() => setOpen(true)}>
+      <button className="shadow-xl text-7xl font-bold rounded-3xl px-20 py-2 bg-gradient-to-b from-yellow-200 to-orange-400 text-white font-raleway" onClick={() => setOpen(true)}>
         start
       </button>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-10"
+          className="relative z-30"
           initialFocus={cancelButtonRef}
           onClose={() => {}}
         >
@@ -48,24 +48,24 @@ function Menu() {
                       </p> 
                     </Dialog.Title>
                     <div className="flex justify-center w-full">
-                      <Link to="#">
-                        <div className="h-24 w-24 bg-black mx-8">
+                      <Link to="#" className="mx-8">
+                        <div className="h-24 w-24 bg-black">
                         </div>
                       </Link>
-                      <Link to="#">
-                        <div className="h-24 w-24 bg-black mx-8">
+                      <Link to="#" className="mx-8">
+                        <div className="h-24 w-24 bg-black">
                         </div>
                       </Link>
-                      <Link to="#">
-                        <div className="h-24 w-24 bg-black mx-8">
+                      <Link to="#" className="mx-8">
+                        <div className="h-24 w-24 bg-black">
                         </div>
                       </Link>
-                      <Link to="#">
-                        <div className="h-24 w-24 bg-black mx-8">
+                      <Link to="#" className="mx-8">
+                        <div className="h-24 w-24 bg-black">
                         </div>
                       </Link>
-                      <Link to="#">
-                        <div className="h-24 w-24 bg-black mx-8">
+                      <Link to="#" className="mx-8">
+                        <div className="h-24 w-24 bg-black">
                         </div>
                       </Link>
                     </div>
