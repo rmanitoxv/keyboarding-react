@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import Game1 from './routes/Game1';
+import SpeedTypeGame from './routes/SpeedTypeGame';
 
 import Root from './routes/Root';
 
@@ -15,8 +15,8 @@ const router = createBrowserRouter([
     element: <Root />,
   },
   {
-    path: "/game1",
-    element: <Game1 />,
+    path: "/game3/:id",
+    element: <SpeedTypeGame />,
   }
 ]);
 
