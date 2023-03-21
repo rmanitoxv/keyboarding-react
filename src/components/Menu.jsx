@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { register } from "swiper/element/bundle";
 import Basics from "./Basics";
-import SpeedType from "./Basics";
+import SpeedType from "./SpeedType";
 register();
 
 function Menu() {
