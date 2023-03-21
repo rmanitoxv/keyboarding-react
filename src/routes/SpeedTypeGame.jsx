@@ -3,6 +3,9 @@ import random from "random-words";
 import { Link, useParams } from "react-router-dom";
 import { AiFillHome, AiFillSound } from "react-icons/ai";
 
+const colors = ["red", "blue", "green", "yellow"];
+let color = "red";
+
 function SpeedTypeGame() {
   let { id } = useParams();
   let timeIncrement = 0;
@@ -39,7 +42,7 @@ function SpeedTypeGame() {
       setStartTimer(3);
       return;
     }
-    if (GameStart){
+    if (GameStart) {
       const timeoutFunction = setInterval(decrementTimer, 1000);
       return () => clearInterval(timeoutFunction);
     }
@@ -53,6 +56,7 @@ function SpeedTypeGame() {
       return;
     }
     if (Start) {
+      color = colors[StartTimer];
       const timeoutFunction = setInterval(decrementStartTimer, 1000);
       return () => clearInterval(timeoutFunction);
     }
@@ -68,11 +72,11 @@ function SpeedTypeGame() {
   }, [Key]);
 
   const restartGame = () => {
-    setEnd(false)
-    setStartTimer(3)
-    setTimer(20)
-    setScore(0)
-    setStart(true)
+    setEnd(false);
+    setStartTimer(3);
+    setTimer(20);
+    setScore(0);
+    setStart(true);
   };
 
   return (
@@ -100,38 +104,49 @@ function SpeedTypeGame() {
             </div>
           </div>
         </div>
-      )
-    : (
-      <div className="w-screen h-screen bg-gray-500 bg-opacity-50 opacity-0 transition-all fixed -z-50 items-center justify-center outline-none overflow-x-hidden overflow-y-auto">
-        <div className="px-20 py-10 rounded-3xl bg-[#EAECFF] flex flex-col justify-center items-center text-md text-[#2E2E2E] font-poppins">
-          <p className="font-rampartone text-7xl mb-4">Congrats!</p>
-          <p>
-            Your score is: <span className="text-black">{Score}</span>
-          </p>
-          <div className="w-full flex justify-between mt-8">
-            <button
-              className="rounded-2xl px-4 py-2 bg-purple-400 text-white"
-              onClick={() => restartGame()}
-            >
-              TRY AGAIN
-            </button>
-            <Link
-              to="/"
-              className="rounded-2xl px-4 py-2 bg-purple-400 text-white"
-            >
-              MAIN MENU
-            </Link>
+      ) : (
+        <div className="w-screen h-screen bg-gray-500 bg-opacity-50 opacity-0 transition-all fixed -z-50 items-center justify-center outline-none overflow-x-hidden overflow-y-auto">
+          <div className="px-20 py-10 rounded-3xl bg-[#EAECFF] flex flex-col justify-center items-center text-md text-[#2E2E2E] font-poppins">
+            <p className="font-rampartone text-7xl mb-4">Congrats!</p>
+            <p>
+              Your score is: <span className="text-black">{Score}</span>
+            </p>
+            <div className="w-full flex justify-between mt-8">
+              <button
+                className="rounded-2xl px-4 py-2 bg-purple-400 text-white"
+                onClick={() => restartGame()}
+              >
+                TRY AGAIN
+              </button>
+              <Link
+                to="/"
+                className="rounded-2xl px-4 py-2 bg-purple-400 text-white"
+              >
+                MAIN MENU
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    )
-    }
-      <div className="px-16 w-full flex justify-between text-5xl text-gray-400">
-        <Link to="/" className="hover:text-sky-300">
-          <AiFillHome />
-        </Link>
-        <AiFillSound />
-      </div>
+      )}
+      {GameStart ? (
+        <div className="px-16 w-full flex justify-between text-4xl font-bold text-gray-400 font-poppins tracking-widest">
+          <div className="flex flex-col text-blue-400 items-center">
+            SCORE
+            <p className="text-6xl text-blue-500">{Score}</p>
+          </div>
+          <div className="flex flex-col text-red-400 items-center">
+            Timer
+            <p className="text-6xl text-red-500">{Timer}</p>
+          </div>
+        </div>
+      ) : (
+        <div className="px-16 w-full flex justify-between text-5xl text-gray-400">
+          <Link to="/" className="hover:text-sky-300">
+            <AiFillHome />
+          </Link>
+          <AiFillSound />
+        </div>
+      )}
       <div className="h-full flex flex-col justify-center items-center text-7xl ">
         <div className="font-knewave mb-12">
           <span className="text-blue-300">S</span>
@@ -148,11 +163,11 @@ function SpeedTypeGame() {
           <span className="text-rose-300">g</span>
         </div>
         {!GameStart ? (
-          <div>
+          <div className={`font-knewave text-${color}-300`}>
             {StartTimer === 0 ? (
               "GO!"
             ) : Start ? (
-              StartTimer
+              <div>{StartTimer}</div>
             ) : (
               <button
                 onClick={() => setStart(true)}
@@ -164,10 +179,12 @@ function SpeedTypeGame() {
           </div>
         ) : (
           <div className="text-pink-800 uppercase flex flex-col justify-center items-center font-raleway font-bold">
-            {Word}
+            <div className="text-center text-6xl w-[35rem] text-white border-4 bg-gradient-to-b from-yellow-400 tracking-widest py-2 rounded-xl border-gray-400 to-orange-400 ">
+              {Word}
+            </div>
             <input
               type="text"
-              className="mt-4 uppercase text-center rounded-3xl bg-transparent border-4 outline-none border-orange-500"
+              className="mt-4 w-[35rem] uppercase text-center rounded-3xl bg-transparent border-4 outline-none py-2 tracking-widest border-orange-500"
               autoFocus
               value={Key}
               onChange={(e) => setKey(e.target.value)}
