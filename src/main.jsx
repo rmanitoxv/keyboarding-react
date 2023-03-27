@@ -5,9 +5,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import SpeedTypeGame from './routes/SpeedTypeGame';
-
+import SpeedTypeWordGame from './routes/SpeedTypeWordGame';
+import SpeedTypeParagraphGame from './routes/SpeedTypeParagraphGame';
 import Root from './routes/Root';
+import BasicsGame from './routes/BasicsGame';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/game3/:id",
-    element: <SpeedTypeGame />,
-  }
+    element: <SpeedTypeWordGame />,
+  },
+  {
+    path: "/game4/:id",
+    element: <SpeedTypeParagraphGame />,
+  },
+  {
+    path: "/basics/:id",
+    element: <BasicsGame />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

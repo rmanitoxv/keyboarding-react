@@ -2,7 +2,8 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { register } from "swiper/element/bundle";
 import Basics from "./Basics";
-import SpeedType from "./SpeedType";
+import SpeedTypeWord from "./SpeedTypeWord";
+import SpeedTypeParagraph from "./SpeedTypeParagraph";
 register();
 
 function Menu() {
@@ -52,7 +53,10 @@ function Menu() {
                         <Basics />
                       </swiper-slide>
                       <swiper-slide>
-                        <SpeedType />
+                        <SpeedTypeWord />
+                      </swiper-slide>
+                      <swiper-slide>
+                        <SpeedTypeParagraph />
                       </swiper-slide>
                     </swiper-container>
                 </Dialog.Panel>

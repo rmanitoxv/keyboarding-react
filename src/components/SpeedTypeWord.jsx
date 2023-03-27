@@ -5,7 +5,7 @@ function SpeedType() {
   return (
     <div className="flex flex-col justify-center items-center py-60">
       <h1>
-        <p className="text-8xl mb-8">Speed Type</p>
+        <p className="text-8xl mb-8">Speed Typing Word</p>
       </h1>
       <div className="flex justify-center w-full">
         <Link to="/game3/easy/" className="mx-8">
