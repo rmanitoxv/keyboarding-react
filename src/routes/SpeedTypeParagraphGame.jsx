@@ -8,7 +8,7 @@ let wrong = [];
 let c = [];
 let w = [];
 let mode = 0;
-function SpeedTypeParagraphGame() {
+const SpeedTypeParagraphGame = () => {
   let { id } = useParams();
   if (id === "easy") {
     mode = 60;
@@ -30,6 +30,7 @@ function SpeedTypeParagraphGame() {
   const [end, setEnd] = useState(false);
   const [corrects, setCorrects] = useState(0);
   const [wpm, setWpm] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
   const textAreaRef = useRef(null);
   const refs = useRef(pg.map(() => React.createRef()));
 
@@ -72,6 +73,7 @@ function SpeedTypeParagraphGame() {
       setEnd(true);
       setStart(false);
       setTimer(null);
+      setAccuracy(Math.round((corrects / pgIndex) * 100))
       return;
     }
     if (start) {
@@ -90,9 +92,6 @@ function SpeedTypeParagraphGame() {
   const checkIndex = (i) => {
     if (end) {
       return;
-    }
-    if (!start) {
-      setStart(true);
     }
     if (text === " ") {
       setText("");
@@ -123,6 +122,9 @@ function SpeedTypeParagraphGame() {
         setWordIndex(wordIndex - 1);
       }
     } else if (/^[a-zA-Z]$/.test(i)) {
+      if (!start) {
+        setStart(true);
+      }
       if (i === pg[pgIndex].charAt(wordIndex)) {
         c.push(wordIndex);
       } else {
@@ -133,7 +135,7 @@ function SpeedTypeParagraphGame() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-screen bg-game-3-bg bg-cover py-16gi">
+    <div className="flex flex-col justify-center items-center h-screen w-screen bg-game-3-bg bg-cover py-16">
       {end ? (
         <div className="w-screen h-screen bg-gray-500 bg-opacity-50 transition-all opacity-100 fixed flex items-center justify-center outline-none overflow-x-hidden overflow-y-auto z-20">
           <div className="px-20 py-10 rounded-3xl bg-[#EAECFF] flex flex-col justify-center items-center text-md text-[#2E2E2E] font-poppins">
@@ -146,7 +148,7 @@ function SpeedTypeParagraphGame() {
             </p>
             <p>
               Your accuracy is:{" "}
-              <span className="text-black">{(corrects / pgIndex) * 100}%</span>
+              <span className="text-black">{ accuracy }%</span>
             </p>
             <div className="w-full flex justify-between mt-8">
               <button
@@ -175,7 +177,7 @@ function SpeedTypeParagraphGame() {
             </p>
             <p>
               Your accuracy is:{" "}
-              <span className="text-black">{(corrects / pgIndex) * 100}%</span>
+              <span className="text-black">{Math.round((corrects / pgIndex) * 100)}%</span>
             </p>
             <div className="w-full flex justify-between mt-8">
               <button
@@ -209,7 +211,7 @@ function SpeedTypeParagraphGame() {
         </div>
       ) : (
         <div className="px-16 w-full flex justify-between text-5xl text-gray-400">
-          <Link to="/" className="hover:text-sky-300">
+          <Link to="/" className="hover:text-sky-300 transition-all ease-in-out">
             <AiFillHome />
           </Link>
           <AiFillSound />
@@ -217,18 +219,18 @@ function SpeedTypeParagraphGame() {
       )}
       <div className="w-full h-full flex flex-col justify-center items-center">
         <div className="font-knewave mb-12 text-6xl">
-          <span className="text-blue-300">S</span>
-          <span className="text-pink-300">p</span>
-          <span className="text-teal-300">e</span>
-          <span className="text-sky-300">e</span>
-          <span className="text-lime-300">d</span>
+          <span className="text-blue-400">S</span>
+          <span className="text-pink-400">p</span>
+          <span className="text-teal-400">e</span>
+          <span className="text-sky-400">e</span>
+          <span className="text-lime-400">d</span>
           &nbsp;
-          <span className="text-orange-300">T</span>
-          <span className="text-red-300">y</span>
-          <span className="text-green-300">p</span>
-          <span className="text-purple-300">i</span>
-          <span className="text-violet-300">n</span>
-          <span className="text-rose-300">g</span>
+          <span className="text-orange-400">T</span>
+          <span className="text-red-400">y</span>
+          <span className="text-green-400">p</span>
+          <span className="text-purple-400">i</span>
+          <span className="text-violet-400">n</span>
+          <span className="text-rose-400">g</span>
         </div>
         <div className="w-1/2 text-3xl">
           <div className="border-2 h-28 p-4 bg-gradient-to-b from-yellow-400 border-orange-900 to-orange-400 rounded-xl ">
@@ -297,12 +299,6 @@ function SpeedTypeParagraphGame() {
             ref={textAreaRef}
             autoFocus
           ></input>
-          {/* <button
-              className="text-2xl border-2 border-black py-1 px-2"
-              onClick={() => restart()}
-            >
-              Retry
-            </button> */}
           <p className="text-red-600 bg-gray-600"></p>
           <p className="text-green-600"></p>
         </div>

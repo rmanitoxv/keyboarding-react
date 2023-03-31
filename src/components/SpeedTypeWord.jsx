@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SpeedType() {
+const SpeedType = () => {
   return (
     <div className="flex flex-col justify-center items-center py-60">
       <h1>

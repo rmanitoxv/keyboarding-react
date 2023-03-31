@@ -6,7 +6,7 @@ import { AiFillHome, AiFillSound } from "react-icons/ai";
 const colors = ["red", "blue", "green", "yellow"];
 let color = "red";
 
-function SpeedTypeGame() {
+const SpeedTypeGame = () => {
   let { id } = useParams();
   let timeIncrement = 0;
   if (id === "easy") {
@@ -141,7 +141,7 @@ function SpeedTypeGame() {
         </div>
       ) : (
         <div className="px-16 w-full flex justify-between text-5xl text-gray-400">
-          <Link to="/" className="hover:text-sky-300">
+          <Link to="/" className="hover:text-sky-300 transition-all ease-in-out">
             <AiFillHome />
           </Link>
           <AiFillSound />
@@ -149,18 +149,18 @@ function SpeedTypeGame() {
       )}
       <div className="h-full flex flex-col justify-center items-center text-7xl ">
         <div className="font-knewave mb-12">
-          <span className="text-blue-300">S</span>
-          <span className="text-pink-300">p</span>
-          <span className="text-teal-300">e</span>
-          <span className="text-sky-300">e</span>
-          <span className="text-lime-300">d</span>
+          <span className="text-blue-400">S</span>
+          <span className="text-pink-400">p</span>
+          <span className="text-teal-400">e</span>
+          <span className="text-sky-400">e</span>
+          <span className="text-lime-400">d</span>
           &nbsp;
-          <span className="text-orange-300">T</span>
-          <span className="text-red-300">y</span>
-          <span className="text-green-300">p</span>
-          <span className="text-purple-300">i</span>
-          <span className="text-violet-300">n</span>
-          <span className="text-rose-300">g</span>
+          <span className="text-orange-400">T</span>
+          <span className="text-red-400">y</span>
+          <span className="text-green-400">p</span>
+          <span className="text-purple-400">i</span>
+          <span className="text-violet-400">n</span>
+          <span className="text-rose-400">g</span>
         </div>
         {!GameStart ? (
           <div className={`font-knewave text-${color}-300`}>
