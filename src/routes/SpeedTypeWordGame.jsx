@@ -6,6 +6,7 @@ import { AiFillHome, AiFillSound } from "react-icons/ai";
 const colors = ["red", "blue", "green", "yellow"];
 let color = "red";
 
+let word = ""
 const SpeedTypeGame = () => {
   let { id } = useParams();
   let timeIncrement = 0;
@@ -22,9 +23,12 @@ const SpeedTypeGame = () => {
   const [Timer, setTimer] = useState(20);
   const [StartTimer, setStartTimer] = useState(3);
   const [Score, setScore] = useState(0);
+  const [Current, setCurrent] = useState(10);
   const [End, setEnd] = useState(false);
   const [Start, setStart] = useState(false);
   const [GameStart, setGameStart] = useState(false);
+  // const [Countdown, setCountdown] = useState(1000)
+  const [Max, setMax] = useState(1);
 
   const decrementTimer = useCallback(() => {
     setTimer((oldTimer) => oldTimer - 1);
@@ -33,6 +37,24 @@ const SpeedTypeGame = () => {
   const decrementStartTimer = useCallback(() => {
     setStartTimer((oldStartTimer) => oldStartTimer - 1);
   }, []);
+
+  // useEffect(() => {
+  //   if (Score === Current){
+  //     if(Countdown != 100 ){
+  //       setCountdown(Countdown-100)
+  //       setCurrent(Score+10)
+  //     }
+  //   }
+  // }, [Score, Countdown, Current])
+
+  useEffect(() => {
+    if (Current === Score){
+      if (Max<=5){
+        setCurrent(Score+10)
+        setMax(Max+1)
+      }
+    }
+  }, [Current, Score, Current, Max])
 
   useEffect(() => {
     if (Timer <= 0) {
@@ -48,8 +70,6 @@ const SpeedTypeGame = () => {
     }
   }, [decrementTimer, Timer, GameStart]);
 
-  let go = null;
-
   useEffect(() => {
     if (StartTimer < 0) {
       setGameStart(true);
@@ -64,19 +84,32 @@ const SpeedTypeGame = () => {
 
   useEffect(() => {
     if (Key.toLocaleLowerCase() === Word.toLocaleLowerCase()) {
-      setKey("");
-      setWord(random());
-      setTimer(Timer + timeIncrement >= 60 ? 60 : Timer + timeIncrement);
+      setTimer(Timer + timeIncrement);
       setScore(Score + 1);
+      while(true){
+      word = random()
+      if (word.length >= Max){
+        setWord(word)
+        break
+      }
+      }
     }
   }, [Key]);
 
+  useEffect(() => {
+    setKey("");
+  }, [Word]);
+
   const restartGame = () => {
+    setKey("");
     setEnd(false);
     setStartTimer(3);
     setTimer(20);
     setScore(0);
     setStart(true);
+    setWord(random());
+    setCurrent(10);
+    setCountdown(1000);
   };
 
   return (
@@ -141,7 +174,10 @@ const SpeedTypeGame = () => {
         </div>
       ) : (
         <div className="px-16 w-full flex justify-between text-5xl text-gray-400">
-          <Link to="/" className="hover:text-sky-300 transition-all ease-in-out">
+          <Link
+            to="/"
+            className="hover:text-sky-300 transition-all ease-in-out"
+          >
             <AiFillHome />
           </Link>
           <AiFillSound />
@@ -160,10 +196,10 @@ const SpeedTypeGame = () => {
           <span className="text-green-400">p</span>
           <span className="text-purple-400">i</span>
           <span className="text-violet-400">n</span>
-          <span className="text-rose-400">g</span>
+          <span className="text-yellow-400">g</span>
         </div>
         {!GameStart ? (
-          <div className={`font-knewave text-${color}-300`}>
+          <div className={`font-knewave text-${color}-400`}>
             {StartTimer === 0 ? (
               "GO!"
             ) : Start ? (
@@ -179,12 +215,12 @@ const SpeedTypeGame = () => {
           </div>
         ) : (
           <div className="text-pink-800 uppercase flex flex-col justify-center items-center font-raleway font-bold">
-            <div className="text-center text-6xl w-[35rem] text-white border-4 bg-gradient-to-b from-yellow-400 tracking-widest py-2 rounded-xl border-gray-400 to-orange-400 ">
+            <div className="text-center text-6xl w-[40rem] text-white border-4 bg-gradient-to-b from-yellow-400 tracking-widest py-2 rounded-xl border-gray-400 to-orange-400 ">
               {Word}
             </div>
             <input
               type="text"
-              className="mt-4 w-[35rem] uppercase text-center rounded-3xl bg-transparent border-4 outline-none py-2 tracking-widest border-orange-500"
+              className="mt-4 w-[40rem] uppercase text-center rounded-3xl bg-transparent border-4 outline-none py-2 tracking-widest border-orange-500"
               autoFocus
               value={Key}
               onChange={(e) => setKey(e.target.value)}
@@ -194,6 +230,6 @@ const SpeedTypeGame = () => {
       </div>
     </div>
   );
-}
+};
 
 export default SpeedTypeGame;
