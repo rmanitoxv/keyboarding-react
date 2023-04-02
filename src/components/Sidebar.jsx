@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-function Sidebar() {
+const Sidebar = () => {
   const [isOpen, setisOpen] = useState(false);
   return (
     <div>

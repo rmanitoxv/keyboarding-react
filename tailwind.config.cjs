@@ -12,6 +12,8 @@ module.exports = {
       poppins: 'Poppins',
       knewave: 'Knewave',
       rampartone: 'Rampart One',
+      dokdo: 'Dokdo',
+      montserrat: 'Montserrat',
     },
     extend: {
       backgroundImage: {

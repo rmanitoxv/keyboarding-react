@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 let colors = ["white", "white", "white", "white", "white"];
 let timeoutRunning = false;
-function BasicsGame() {
+const BasicsGame = () => {
   let { id } = useParams()
   const parameters = [
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
