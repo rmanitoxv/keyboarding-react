@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Basics = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-full w-ful">
+    <div className="flex flex-col justify-center items-center h-full w-full">
       <h1>
         <p className="text-8xl mb-8 font-dokdo">
           <span className="text-blue-400">B</span>
