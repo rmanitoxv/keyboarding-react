@@ -48,7 +48,7 @@ const Menu = () => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg text-left shadow-xl transition-all w-full mx-16 flex h-[95%] bg-sky-100">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg text-left shadow-xl transition-all w-full mx-16 flex h-[95%] bg-[#EAECFF]">
                   <swiper-container navigation>
                     <swiper-slide className="h-full">
                       <button onClick={() => setOpen(false)} className="w-full text-6xl text-gray-400 hover:text-sky-300 transition-all ease-in-out">

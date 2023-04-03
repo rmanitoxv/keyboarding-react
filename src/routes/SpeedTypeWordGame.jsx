@@ -6,7 +6,7 @@ import { AiFillHome, AiFillSound } from "react-icons/ai";
 const colors = ["red", "blue", "green", "yellow"];
 let color = "red";
 
-let word = ""
+let word = "";
 const SpeedTypeGame = () => {
   let { id } = useParams();
   let timeIncrement = 0;
@@ -38,23 +38,12 @@ const SpeedTypeGame = () => {
     setStartTimer((oldStartTimer) => oldStartTimer - 1);
   }, []);
 
-  // useEffect(() => {
-  //   if (Score === Current){
-  //     if(Countdown != 100 ){
-  //       setCountdown(Countdown-100)
-  //       setCurrent(Score+10)
-  //     }
-  //   }
-  // }, [Score, Countdown, Current])
-
   useEffect(() => {
-    if (Current === Score){
-      if (Max<=5){
-        setCurrent(Score+10)
-        setMax(Max+1)
-      }
+    if (Current === Score) {
+      setCurrent(Score + 10);
+      setMax(Max + 1);
     }
-  }, [Current, Score, Current, Max])
+  }, [Current, Score, Current, Max]);
 
   useEffect(() => {
     if (Timer <= 0) {
@@ -86,12 +75,12 @@ const SpeedTypeGame = () => {
     if (Key.toLocaleLowerCase() === Word.toLocaleLowerCase()) {
       setTimer(Timer + timeIncrement);
       setScore(Score + 1);
-      while(true){
-      word = random()
-      if (word.length >= Max){
-        setWord(word)
-        break
-      }
+      while (true) {
+        word = random();
+        if (word.length >= Max) {
+          setWord(word);
+          break;
+        }
       }
     }
   }, [Key]);
@@ -223,7 +212,7 @@ const SpeedTypeGame = () => {
               className="mt-4 w-[40rem] uppercase text-center rounded-3xl bg-transparent border-4 outline-none py-2 tracking-widest border-orange-500"
               autoFocus
               value={Key}
-              onChange={(e) => setKey(e.target.value)}
+              onChange={(e) => {if(e.target.value != " ") setKey(e.target.value)}}
             />
           </div>
         )}
