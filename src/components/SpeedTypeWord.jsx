@@ -20,10 +20,10 @@ const SpeedType = () => {
         </p>
       </h1>
       <div className="flex justify-center w-3/4 flex-wrap text-white">
-        <div className="basis-1/4 my-4 flex justify-center items-center">
+        <div className="basis-1/4 my-4 flex justify-center items-center group">
           <Link
             to="/game3/easy/"
-            className="font-montserrat text-center flex justify-center items-center w-28 h-28 bg-green-900 border-4 text-2xl font-bold border-green-500 rounded-xl"
+            className="group-hover: font-montserrat text-center flex justify-center items-center w-32 h-32 bg-green-900 border-8 text-2xl font-bold border-green-500 rounded-xl"
           >
             Easy
           </Link>
@@ -31,7 +31,7 @@ const SpeedType = () => {
         <div className="basis-1/4 my-4 flex justify-center items-center">
           <Link
             to="/game3/medium/"
-            className="font-montserrat text-center flex justify-center items-center w-28 h-28 bg-blue-900 border-4 text-2xl font-bold border-blue-500 rounded-xl"
+            className="font-montserrat text-center flex justify-center items-center w-32 h-32 bg-blue-900 border-8 text-2xl font-bold border-blue-500 rounded-xl"
           >
             Medium
           </Link>
@@ -39,7 +39,7 @@ const SpeedType = () => {
         <div className="basis-1/4 my-4 flex justify-center items-center">
           <Link
             to="/game3/hard/"
-            className="font-montserrat text-center flex justify-center items-center w-28 h-28 bg-red-900 border-4 text-2xl font-bold border-red-500 rounded-xl"
+            className="font-montserrat text-center flex justify-center items-center w-32 h-32 bg-red-900 border-8 text-2xl font-bold border-red-500 rounded-xl"
           >
             Hard
           </Link>

@@ -16,7 +16,7 @@ const BasicsGame = () => {
   ];
 
   const fingerKeys = [
-    ['a', '`', '~', 1, '!', 'z'],
+    ['a', '`', '~', 1, '!', 'z', 'q'],
     ['s', 2, '@', 'w', 'x'],
     ['d', 3, '#', 'e', 'c'],
     ['f', 4, '$', 5, '%', 'r', 't', 'f', 'g', 'v', 'b'],
@@ -24,7 +24,7 @@ const BasicsGame = () => {
     [6, '^', 7, '&', 'y', 'u', 'h', 'j', 'n', 'm'],
     [8, '*', 'i', 'k', ',', '<'],
     [9, '(', 'o', 'l', '.', '>'],
-    [0, ')', 'p', ';', ':', '?', '?', '-', '_', '[', '{', "'", '"', '=', '+', ']', '}', '\\', '|']
+    [0, ')', 'p', ';', ':', '/', '?', '-', '_', '[', '{', "'", '"', '=', '+', ']', '}', '\\', '|']
   ]
 
   const getRandomKeys = () => {
@@ -61,7 +61,7 @@ const BasicsGame = () => {
 
   useEffect(() => {
     divRef.current.focus();
-  }, []);
+  }, [index]);
 
   useEffect(() => {
     if (progress === 100) {
@@ -95,6 +95,7 @@ const BasicsGame = () => {
     setEnd(false);
     setProgress(0)
     setKeys(getRandomKeys())
+    setIndex(0)
     colors = ["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"];
   };
 
@@ -111,7 +112,7 @@ const BasicsGame = () => {
         }
       }
     }
-  }, [index])
+  }, [index, left, right, end])
   
 
   return (
@@ -200,12 +201,13 @@ const BasicsGame = () => {
       <div className="flex w-full justify-center items-center mb-8 font-raleway font-bold text-white">
         {
           keys.map((key, index) => {
+            console.log(key)
             return (
               <div
                 key={index}
                 className={`flex justify-center items-center border-4 border-gray-500 mx-8 rounded-xl w-24 h-24 bg-${colors[index]}`}
               >
-                {key == ' ' ? <>&nbsp;</> : key}
+                {key}
               </div>
             );
           }
