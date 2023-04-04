@@ -2,8 +2,6 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { AiFillHome, AiFillSound } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 
-let colors = ["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"];
-let timeoutRunning = false;
 const BasicsGame = () => {
   let { id } = useParams()
   const parameters = [
@@ -44,6 +42,8 @@ const BasicsGame = () => {
   const [end, setEnd] = useState(false);
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
+  const [colors, setColors] = useState(["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"])
+  const [timeoutRunning, setTimeoutRunning] = useState(false)
 
   const divRef = useRef(null)
 
@@ -55,7 +55,7 @@ const BasicsGame = () => {
     if (index === 5) {
       setIndex(0);
       setKeys(getRandomKeys());
-      colors = ["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"];
+      setColors(["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"]);
     }
   }, [index]);
 
@@ -69,6 +69,39 @@ const BasicsGame = () => {
     }
   }, [progress]);
 
+  const wrongColor = () => {
+    const updateColor = colors.map((color, i) => {
+      if (i === index) {
+        return 'red-500';
+      } else {
+        return color;
+      }
+    })
+    setColors(updateColor)
+  }
+
+  const correctColor = () => {
+    const updateColor = colors.map((color, i) => {
+      if (i === index) {
+        return 'green-500';
+      } else {
+        return color;
+      }
+    })
+    setColors(updateColor)
+  }
+
+  const defaultColor = () => {
+    const updateColor = colors.map((color, i) => {
+      if (i === index) {
+        return 'blue-500';
+      } else {
+        return color;
+      }
+    })
+    setColors(updateColor)
+  }
+
   const changeColor = (key) => {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
     if (timeoutRunning || end) {
@@ -76,16 +109,16 @@ const BasicsGame = () => {
     }
     if(((/^[A-Za-z0-9\s]$/.test(key)) || (specialChars.test(key))) ){
       if (key.toLowerCase() == keys[index]) {
-        colors[index] = "green-500";
+        correctColor()
         setProgress(progress + 4);
         setIndex(index + 1);
       } else if (key !== "Shift") {
-        timeoutRunning = true;
-        colors[index] = "red-500";
+        setTimeoutRunning(true)
+        wrongColor()
         reloadComponent();
         setTimeout(() => {
-          colors[index] = "blue-500";
-          timeoutRunning = false;
+          defaultColor()
+          setTimeoutRunning(false)
           reloadComponent();
         }, 100);
       }
@@ -96,7 +129,7 @@ const BasicsGame = () => {
     setProgress(0)
     setKeys(getRandomKeys())
     setIndex(0)
-    colors = ["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"];
+    setColors(["blue-500", "blue-500", "blue-500", "blue-500", "blue-500"])
   };
 
   useEffect(() => {
@@ -228,8 +261,8 @@ const BasicsGame = () => {
         </div>
       }
         <div className="flex justify-center w-full">
-          <img src={`/images/fingers/${left ? left : "0"}.png`} className="w-96" />
-          <img src={`/images/fingers/${right ? right : "00"}.png`} className="w-96" />
+          <img src={`/images/fingers/${left ? left : "0"}.svg`} className="w-96" />
+          <img src={`/images/fingers/${right ? right : "00"}.svg`} className="w-96" />
         </div>
     </div>
   );

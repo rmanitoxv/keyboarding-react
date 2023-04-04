@@ -1,22 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SpeedType = () => {
+const WhackALetter = () => {
   return (
     <div className="flex flex-col justify-center items-center h-full w-full">
       <h1>
         <p className="text-8xl mb-8 font-dokdo">
-          <span className="text-blue-400">T</span>
-          <span className="text-pink-400">I</span>
-          <span className="text-teal-400">M</span>
-          <span className="text-sky-400">E</span>
+          <span className="text-blue-400">W</span>
+          <span className="text-pink-400">H</span>
+          <span className="text-teal-400">A</span>
+          <span className="text-sky-400">C</span>
+          <span className="text-lime-400">K</span>
           &nbsp;
-          <span className="text-lime-400">A</span>
+          <span className="text-red-400">A</span>
+          &nbsp;
+          <span className="text-fuchsia-400">L</span>
+          <span className="text-orange-400">E</span>
           <span className="text-red-400">T</span>
-          <span className="text-fuchsia-400">T</span>
-          <span className="text-orange-400">A</span>
-          <span className="text-red-400">C</span>
-          <span className="text-cyan-400">K</span>
+          <span className="text-cyan-400">T</span>
+          <span className="text-amber-400">E</span>
+          <span className="text-green-400">R</span>
         </p>
       </h1>
       <div className="flex justify-center w-3/4 flex-wrap text-white">
@@ -49,4 +52,4 @@ const SpeedType = () => {
   );
 };
 
-export default SpeedType;
+export default WhackALetter;

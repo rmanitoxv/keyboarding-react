@@ -3,22 +3,7 @@ import random from "random-words";
 import { Link, useParams } from "react-router-dom";
 import { AiFillHome, AiFillSound } from "react-icons/ai";
 
-let correct = [];
-let wrong = [];
-let c = [];
-let w = [];
-let mode = 0;
 const SpeedTypeParagraphGame = () => {
-  let { id } = useParams();
-  if (id === "easy") {
-    mode = 60;
-  }
-  if (id === "medium") {
-    mode = 30;
-  }
-  if (id === "hard") {
-    mode = 15;
-  }
   const [text, setText] = useState("");
   const [pg, setParagraph] = useState(random({ exactly: 500, maxLength: 6 }));
   const [pgIndex, setPgIndex] = useState(0);
@@ -29,16 +14,32 @@ const SpeedTypeParagraphGame = () => {
   const [start, setStart] = useState(false);
   const [end, setEnd] = useState(false);
   const [corrects, setCorrects] = useState(0);
+  const [mode, setMode] = useState(0);
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const textAreaRef = useRef(null);
   const refs = useRef(pg.map(() => React.createRef()));
+  const [correct, setCorrect ] = useState([])
+  const [wrong, setWrong ] = useState([])
+  const [c, setC ] = useState([])
+  const [w, setW ] = useState([])
 
+  let { id } = useParams();
+  if (id === "easy") {
+    setMode(60);
+  }
+  if (id === "medium") {
+    setMode(30);
+  }
+  if (id === "hard") {
+    setMode(15);
+  }
+  
   const restart = () => {
-    correct = [];
-    wrong = [];
-    c = [];
-    w = [];
+    setCorrect([])
+    setWrong([])
+    setC([])
+    setW([])
     setText("");
     setParagraph(random({ exactly: 500, maxLength: 6 }));
     setPgIndex(0);

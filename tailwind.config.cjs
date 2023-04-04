@@ -19,6 +19,7 @@ module.exports = {
       backgroundImage: {
         'mainmenu': "url('/images/background.svg')",
         'game-3-bg': "url('/images/game-3-bg.svg')",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       }
     }
 
