@@ -9,12 +9,10 @@ const SpeedTypeParagraphGame = () => {
   const [pgIndex, setPgIndex] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
   const [timer, setTimer] = useState(null);
-  const [time, setTime] = useState(mode * 1000);
   const [tempo, setTempo] = useState(60);
   const [start, setStart] = useState(false);
   const [end, setEnd] = useState(false);
   const [corrects, setCorrects] = useState(0);
-  const [mode, setMode] = useState(0);
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const textAreaRef = useRef(null);
@@ -23,17 +21,19 @@ const SpeedTypeParagraphGame = () => {
   const [wrong, setWrong ] = useState([])
   const [c, setC ] = useState([])
   const [w, setW ] = useState([])
-
   let { id } = useParams();
+  let mode
   if (id === "easy") {
-    setMode(60);
+    mode = 60
   }
   if (id === "medium") {
-    setMode(30);
+    mode = 30
   }
   if (id === "hard") {
-    setMode(15);
+    mode = 15
   }
+  const [time, setTime] = useState(mode * 1000);
+
   
   const restart = () => {
     setCorrect([])
@@ -59,6 +59,18 @@ const SpeedTypeParagraphGame = () => {
       setTime(timer - now);
     }
   };
+
+  const insertValue = (array, value) => {
+    let newArray = array
+    newArray.push(value)
+    return newArray
+  }
+
+  const popValue = (array) => {
+    let newArray = array
+    newArray.pop()
+    return newArray
+  }
 
   useEffect(() => {
     if (tempo !== Math.trunc(time / 1000) && Math.trunc(time / 1000) !== 59) {
@@ -86,6 +98,7 @@ const SpeedTypeParagraphGame = () => {
     }
   }, [timer, start, time, end, text]);
 
+
   const checkWord = (word) => {
     setText(word);
   };
@@ -103,12 +116,12 @@ const SpeedTypeParagraphGame = () => {
         return;
       } else if (text === pg[pgIndex]) {
         setCorrects(corrects + 1);
-        correct.push(pgIndex);
+        setCorrect(insertValue(correct, pgIndex))
       } else {
-        wrong.push(pgIndex);
+        setWrong(insertValue(wrong, pgIndex))
       }
-      c = [];
-      w = [];
+      setC([])
+      setW([])
       setPgIndex(pgIndex + 1);
       setText("");
       setWordIndex(0);
@@ -116,9 +129,9 @@ const SpeedTypeParagraphGame = () => {
     } else if (i === "Backspace") {
       if (wordIndex !== 0) {
         if (c.includes(wordIndex - 1)) {
-          c.pop();
+          setC(popValue(c))
         } else {
-          w.pop();
+          setW(popValue(w))
         }
         setWordIndex(wordIndex - 1);
       }
@@ -127,9 +140,9 @@ const SpeedTypeParagraphGame = () => {
         setStart(true);
       }
       if (i === pg[pgIndex].charAt(wordIndex)) {
-        c.push(wordIndex);
+        setC(insertValue(c, wordIndex))
       } else {
-        w.push(wordIndex);
+        setW(insertValue(w, wordIndex))
       }
       setWordIndex(wordIndex + 1);
     }

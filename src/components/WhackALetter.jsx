@@ -25,7 +25,7 @@ const WhackALetter = () => {
       <div className="flex justify-center w-3/4 flex-wrap text-white">
         <div className="basis-1/4 my-4 flex justify-center items-center ">
           <Link
-            to="/game3/easy/"
+            to="/game1/easy/"
             className="font-montserrat text-center flex justify-center items-center w-32 h-32 hover:bg-gradient-radial from-green-500 to-green-900 bg-green-900 border-8 text-2xl font-bold border-green-500 rounded-xl"
           >
             Easy
@@ -33,7 +33,7 @@ const WhackALetter = () => {
         </div>
         <div className="basis-1/4 my-4 flex justify-center items-center">
           <Link
-            to="/game3/medium/"
+            to="/game1/medium/"
             className="font-montserrat text-center flex justify-center items-center w-32 h-32 hover:bg-gradient-radial from-blue-500 to-blue-900 bg-blue-900 border-8 text-2xl font-bold border-blue-500 rounded-xl"
           >
             Medium
@@ -41,7 +41,7 @@ const WhackALetter = () => {
         </div>
         <div className="basis-1/4 my-4 flex justify-center items-center">
           <Link
-            to="/game3/hard/"
+            to="/game1/hard/"
             className="font-montserrat text-center flex justify-center items-center w-32 h-32 hover:bg-gradient-radial from-red-500 to-red-900 bg-red-900 border-8 text-2xl font-bold border-red-500 rounded-xl"
           >
             Hard

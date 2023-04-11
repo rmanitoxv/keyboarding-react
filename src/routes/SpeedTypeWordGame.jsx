@@ -73,7 +73,12 @@ const SpeedTypeGame = () => {
 
   useEffect(() => {
     if (Key.toLocaleLowerCase() === Word.toLocaleLowerCase()) {
-      setTimer(Timer + timeIncrement);
+      if (Timer + timeIncrement >= 20){
+        setTimer(20)
+      }
+      else{
+        setTimer(Timer + timeIncrement);
+      }
       setScore(Score + 1);
       while (true) {
         word = random();

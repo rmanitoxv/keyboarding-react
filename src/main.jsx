@@ -9,11 +9,16 @@ import SpeedTypeWordGame from './routes/SpeedTypeWordGame';
 import SpeedTypeParagraphGame from './routes/SpeedTypeParagraphGame';
 import Root from './routes/Root';
 import BasicsGame from './routes/BasicsGame';
+import WhackALetterGame from './routes/WhackALetterGame';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+  },
+  {
+    path: "/game1/:id",
+    element: <WhackALetterGame />,
   },
   {
     path: "/game3/:id",
