@@ -162,14 +162,13 @@ const SpeedTypeParagraphGame = () => {
             </p>
             <p>
               Your accuracy is:{" "}
-              <span className="text-black">{ accuracy }%</span>
+              <span className="text-black">{accuracy}%</span>
             </p>
             <div className="w-full flex justify-between mt-8">
               <button
                 className="rounded-2xl px-4 py-2 bg-purple-400 text-white"
                 onClick={() => restart()}
               >
-                TRY AGAIN
               </button>
               <Link
                 to="/"

@@ -24,6 +24,7 @@ const WhackALetterGame = () => {
     setEnd(false);
     setStart(true);
     setStartTimer(3);
+    setScore(0)
   };
 
   const deleteElement = (array, value) => {
@@ -49,7 +50,7 @@ const WhackALetterGame = () => {
   const checkLetter = (letter) => {
     let newLetters = letters
     for (let i = 0; i < letters.length; i++) {
-      if (newLetters[i].letter === letter.toUpperCase()) {
+      if (newLetters[i].letter === letter.toUpperCase() && newLetters[i].color === "blue") {
         newLetters[i].color = "green"
         setLetters(newLetters)
         return newLetters[i];
@@ -72,10 +73,10 @@ const WhackALetterGame = () => {
         const div = checkLetter(key);
         if (div) {
           setScore(score + 1)
+          setKey(null)
           const timeoutFunction = setTimeout(() => {
               deleteElement(letters, div)
           }, 1000);
-          return () => clearTimeout(timeoutFunction)
         }
       }
     }
@@ -101,6 +102,10 @@ const WhackALetterGame = () => {
       setGameStart(false);
       return;
     }
+    if (letters.length && timer === letters[0].timer && letters[0].color === "blue"){
+      console.log("tite")
+      setLetters(deleteElement(letters, letters[0]))
+    }
     if (start) {
       const timeoutFunction = setInterval(decrementTimer, 1000);
       return () => clearInterval(timeoutFunction);
@@ -114,18 +119,12 @@ const WhackALetterGame = () => {
         top: Math.floor(Math.random() * 22),
         left: Math.floor(Math.random() * 46),
         color: "blue",
+        timer: timer - 5
       };
   
       setLetters(insertValue(letters, div));
-  
-      const timeoutFunction = setTimeout(() => {
-        if (checkLetter(div.letter)) {
-          setLetters(deleteElement(letters, div));
-        }
-      }, 5000);
-      return () => clearTimeout(timeoutFunction)
     }
-  }, [gameStart, timer]);
+  }, [gameStart, timer, letters]);
 
   return (
     <div
