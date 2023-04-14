@@ -4,7 +4,7 @@ import { AiFillHome, AiFillSound } from "react-icons/ai";
 
 
 
-const WhackALetterGame = () => {
+const PopTheBalloonGame = () => {
   const colors = ["red", "blue", "green", "yellow"];
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [color, setColor] = useState()
@@ -103,7 +103,6 @@ const WhackALetterGame = () => {
       return;
     }
     if (letters.length && timer === letters[0].timer && letters[0].color === "blue"){
-      console.log("tite")
       setLetters(deleteElement(letters, letters[0]))
     }
     if (start) {
@@ -257,4 +256,4 @@ const WhackALetterGame = () => {
   );
 };
 
-export default WhackALetterGame;
+export default PopTheBalloonGame;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const WhackALetter = () => {
+const PopTheBalloon = () => {
   return (
     <div className="flex flex-col justify-center items-center h-full w-full">
       <h1>
@@ -52,4 +52,4 @@ const WhackALetter = () => {
   );
 };
 
-export default WhackALetter;
+export default PopTheBalloon;

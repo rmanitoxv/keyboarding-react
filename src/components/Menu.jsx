@@ -5,7 +5,7 @@ import { register } from "swiper/element/bundle";
 import Basics from "./Basics";
 import SpeedTypeWord from "./SpeedTypeWord";
 import SpeedTypeParagraph from "./SpeedTypeParagraph";
-import WhackALetter from "./WhackALetter";
+import PopTheBalloon from "./PopTheBalloon";
 register();
 
 const Menu = () => {
@@ -61,7 +61,7 @@ const Menu = () => {
                       <button onClick={() => setOpen(false)} className="w-full text-6xl text-gray-400 hover:text-sky-300 transition-all ease-in-out">
                         <AiOutlineClose className="absolute z-50 top-4 right-4" />
                       </button>
-                      <WhackALetter />
+                      <PopTheBalloon />
                     </swiper-slide>
                     <swiper-slide className="h-full">
                       <button onClick={() => setOpen(false)} className="w-full text-6xl text-gray-400 hover:text-sky-300 transition-all ease-in-out">
