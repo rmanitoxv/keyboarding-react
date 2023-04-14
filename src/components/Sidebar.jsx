@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Sidebar = () => {
   const [isOpen, setisOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('theme'))
+  const [click, setClick] = useState(0)
+
+  useEffect(() => {
+    setTheme(localStorage.getItem('theme'))
+  }, [localStorage.getItem('theme')])
+  
+
   return (
     <div>
       <button
         disabled={isOpen}
-        className="z-20 absolute rounded-full bottom-[-5rem] left-[-2rem] h-44 w-44 bg-sky-300"
+        className="z-20 absolute rounded-full bottom-[-5rem] left-[-2rem] h-44 w-44" 
+        style={{backgroundColor: theme}}
         onClick={() => setisOpen(true)}
       >
         <div className="absolute top-6 left-16">
@@ -20,7 +29,8 @@ const Sidebar = () => {
             isOpen
               ? "left-0 top-0 rounded-tr-3xl"
               : "-left-64 top-full rounded-tr-full"
-          } bg-sky-300 w-72 h-screen transition-all duration-500 text-white font-poppins py-2 px-6`}
+          } w-72 h-screen transition-all duration-500 text-white font-poppins py-2 px-6`}
+          style={{backgroundColor: theme}}
         >
           <div className="flex w-full justify-end">
             <button
@@ -63,15 +73,15 @@ const Sidebar = () => {
           </div>
           <div className="flex text-base w-full justify-center items-center">
             Theme:
-            <button className="ml-2 mr-1 w-6 h-6 bg-sky-300 rounded-full border border-white">
+            <button className="ml-2 mr-1 w-6 h-6 bg-sky-300 rounded-full border border-white" onClick={()=>{localStorage.setItem('theme', '#7dd3fc'), setClick(click+1) }}>
             </button>
-            <button className="mx-1 w-6 h-6 bg-black rounded-full border border-white">
+            <button className="mx-1 w-6 h-6 bg-purple-300 rounded-full border border-white" onClick={()=>{localStorage.setItem('theme', '#d8b4fe'), setClick(click+1) }}>
             </button>
-            <button className="mx-1 w-6 h-6 bg-pink-300 rounded-full border border-white">
+            <button className="mx-1 w-6 h-6 bg-pink-300 rounded-full border border-white" onClick={()=>{localStorage.setItem('theme', '#f9a8d4'), setClick(click+1) }}>
             </button>
-            <button className="mx-1 w-6 h-6 bg-orange-300 rounded-full border border-white">
+            <button className="mx-1 w-6 h-6 bg-orange-300 rounded-full border border-white" onClick={()=>{localStorage.setItem('theme', '#fdba74'), setClick(click+1) }}>
             </button>
-            <button className="ml-2 w-6 h-6 bg-lime-300 rounded-full border border-white">
+            <button className="ml-2 w-6 h-6 bg-lime-300 rounded-full border border-white" onClick={()=>{localStorage.setItem('theme', '#bef264'), setClick(click+1) }}>
             </button>
           </div>
         </div>

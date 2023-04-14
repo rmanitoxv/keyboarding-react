@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AiFillHome, AiFillSound } from "react-icons/ai";
+import Balloon from "../components/Balloon";
 
 
 
@@ -50,8 +51,8 @@ const PopTheBalloonGame = () => {
   const checkLetter = (letter) => {
     let newLetters = letters
     for (let i = 0; i < letters.length; i++) {
-      if (newLetters[i].letter === letter.toUpperCase() && newLetters[i].color === "blue") {
-        newLetters[i].color = "green"
+      if (newLetters[i].letter === letter.toUpperCase() && newLetters[i].bg === "balloon.png") {
+        newLetters[i].bg = "balloon-pop.gif"
         setLetters(newLetters)
         return newLetters[i];
       }
@@ -102,7 +103,7 @@ const PopTheBalloonGame = () => {
       setGameStart(false);
       return;
     }
-    if (letters.length && timer === letters[0].timer && letters[0].color === "blue"){
+    if (letters.length && timer === letters[0].timer && letters[0].bg === "balloon.png"){
       setLetters(deleteElement(letters, letters[0]))
     }
     if (start) {
@@ -117,7 +118,7 @@ const PopTheBalloonGame = () => {
         letter: LETTERS[Math.floor(Math.random() * LETTERS.length)],
         top: Math.floor(Math.random() * 22),
         left: Math.floor(Math.random() * 46),
-        color: "blue",
+        bg: "balloon.png",
         timer: timer - 5
       };
   
@@ -217,6 +218,8 @@ const PopTheBalloonGame = () => {
           <span className="text-violet-400">n</span>
           <span className="text-yellow-400">g</span>
         </div>
+        <div className="bg-balloon"></div>
+        <div className="bg-balloon-pop"></div>
         {!gameStart ? (
           <div className={`font-knewave text-${color}-400`}>
             {startTimer === 0 ? (
@@ -233,19 +236,11 @@ const PopTheBalloonGame = () => {
             )}
           </div>
         ) : (
-          <div className="bg-white w-[48.5rem] h-[24.5rem] relative text-base rounded-3xl">
+          <div className="bg-white w-[48.5rem] h-[24.5rem] relative rounded-3xl">
             { letters &&
               letters.map((div, index) => {
                 return (
-                  <div
-                    key={index}
-                    className="absolute"
-                    style={{ top: `${div.top}rem`, left: `${div.left}rem` }}
-                  >
-                    <div className="rounded-full text-white w-10 h-10 flex justify-center items-center" style={{background: `${div.color}`}}>
-                      {div.letter}
-                    </div>
-                  </div>
+                  <Balloon key={index} div={div}/>
                 );
               })
             }

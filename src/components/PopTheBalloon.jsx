@@ -6,20 +6,21 @@ const PopTheBalloon = () => {
     <div className="flex flex-col justify-center items-center h-full w-full">
       <h1>
         <p className="text-8xl mb-8 font-dokdo">
-          <span className="text-blue-400">W</span>
-          <span className="text-pink-400">H</span>
-          <span className="text-teal-400">A</span>
-          <span className="text-sky-400">C</span>
-          <span className="text-lime-400">K</span>
+          <span className="text-blue-400">P</span>
+          <span className="text-pink-400">O</span>
+          <span className="text-teal-400">P</span>
           &nbsp;
-          <span className="text-red-400">A</span>
+          <span className="text-sky-400">T</span>
+          <span className="text-lime-400">H</span>
+          <span className="text-red-400">E</span>
           &nbsp;
-          <span className="text-fuchsia-400">L</span>
-          <span className="text-orange-400">E</span>
-          <span className="text-red-400">T</span>
-          <span className="text-cyan-400">T</span>
-          <span className="text-amber-400">E</span>
-          <span className="text-green-400">R</span>
+          <span className="text-fuchsia-400">B</span>
+          <span className="text-orange-400">A</span>
+          <span className="text-slate-400">L</span>
+          <span className="text-cyan-400">L</span>
+          <span className="text-amber-400">O</span>
+          <span className="text-green-400">O</span>
+          <span className="text-rose-400">N</span>
         </p>
       </h1>
       <div className="flex justify-center w-3/4 flex-wrap text-white">

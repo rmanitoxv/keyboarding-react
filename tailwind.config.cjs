@@ -18,6 +18,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'mainmenu': "url('/images/background.svg')",
+        'balloon' : "url('/images/balloon.png')",
+        'balloon-pop' : "url('/images/balloon-pop.gif')",
         'game-3-bg': "url('/images/game-3-bg.svg')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       }
