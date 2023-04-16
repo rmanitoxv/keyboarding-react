@@ -169,6 +169,7 @@ const SpeedTypeParagraphGame = () => {
                 className="rounded-2xl px-4 py-2 bg-purple-400 text-white"
                 onClick={() => restart()}
               >
+                TRY AGAIN
               </button>
               <Link
                 to="/"
