@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import iconBlue from "../assets/icon-blue.svg"
+import sampleProfile from "../assets/sample-profile.svg"
+import technokidsLogo from "../assets/technokids-logo.svg"
+import wisdomLogo from "../assets/wisdom-logo.svg"
+import wisdomIcon from "../assets/wisdom-icon.svg"
+
 
 const Sidebar = () => {
   const [isOpen, setisOpen] = useState(false);
@@ -20,7 +26,7 @@ const Sidebar = () => {
         onClick={() => setisOpen(true)}
       >
         <div className="absolute top-6 left-16">
-          <img className="w-14" src="/images/wisdom-icon.svg" />
+          <img className="w-14" src={wisdomIcon} />
         </div>
       </button>
       {
@@ -42,7 +48,7 @@ const Sidebar = () => {
           </div>
           <div className="flex flex-col items-center justify-center w-full">
             <img
-              src="/images/sample-profile.svg"
+              src={sampleProfile}
               className="rounded-full object-cover mb-1"
             />
             <p className="font-semibold text-4xl">USER</p>
@@ -68,8 +74,8 @@ const Sidebar = () => {
           </div>
           <div className="text-xl mb-4">
             Project by:
-            <img src="/images/technokids-logo.svg" className="my-2" />
-            <img src="/images/wisdom-logo.svg" className="my-2" />
+            <img src={technokidsLogo} className="my-2" />
+            <img src={wisdomLogo} className="my-2" />
           </div>
           <div className="flex text-base w-full justify-center items-center">
             Theme:

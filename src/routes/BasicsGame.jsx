@@ -1,8 +1,21 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { AiFillHome, AiFillSound } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
+import finger0 from '../assets/fingers/0.svg'
+import finger00 from '../assets/fingers/00.svg'
+import finger1 from '../assets/fingers/1.svg'
+import finger2 from '../assets/fingers/2.svg'
+import finger3 from '../assets/fingers/3.svg'
+import finger4 from '../assets/fingers/4.svg'
+import finger5 from '../assets/fingers/5.svg'
+import finger6 from '../assets/fingers/6.svg'
+import finger7 from '../assets/fingers/7.svg'
+import finger8 from '../assets/fingers/8.svg'
+import finger9 from '../assets/fingers/9.svg'
+import finger10 from '../assets/fingers/10.svg'
 
 const BasicsGame = () => {
+  const fingers = [finger1, finger2, finger3, finger4, finger5, finger6, finger7, finger8, finger9, finger10]
   let { id } = useParams()
   const parameters = [
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
@@ -234,7 +247,6 @@ const BasicsGame = () => {
       <div className="flex w-full justify-center items-center mb-8 font-raleway font-bold text-white">
         {
           keys.map((key, index) => {
-            console.log(key)
             return (
               <div
                 key={index}
@@ -261,8 +273,20 @@ const BasicsGame = () => {
         </div>
       }
         <div className="flex justify-center w-full">
-          <img src={`/images/fingers/${left ? left : "0"}.svg`} className="w-96" />
-          <img src={`/images/fingers/${right ? right : "00"}.svg`} className="w-96" />
+          <img src={`${left ? fingers[left - 1] : finger0}`} className="w-96" />
+          <img src={`${right ? fingers[right - 1] : finger00}`} className="w-96" />
+        </div>
+        <div>
+          <img src={finger1} className="hidden" />
+          <img src={finger2} className="hidden" />
+          <img src={finger3} className="hidden" />
+          <img src={finger4} className="hidden" />
+          <img src={finger5} className="hidden" />
+          <img src={finger6} className="hidden" />
+          <img src={finger7} className="hidden" />
+          <img src={finger8} className="hidden" />
+          <img src={finger9} className="hidden" />
+          <img src={finger10} className="hidden" />
         </div>
     </div>
   );

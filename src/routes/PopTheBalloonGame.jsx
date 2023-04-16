@@ -3,8 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { AiFillHome, AiFillSound } from "react-icons/ai";
 import Balloon from "../components/Balloon";
 
-
-
 const PopTheBalloonGame = () => {
   const colors = ["red", "blue", "green", "yellow"];
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -116,8 +114,8 @@ const PopTheBalloonGame = () => {
     if (gameStart) {
       const div = {
         letter: LETTERS[Math.floor(Math.random() * LETTERS.length)],
-        top: Math.floor(Math.random() * 22),
-        left: Math.floor(Math.random() * 46),
+        top: Math.floor(Math.random() * 18),
+        left: Math.floor(Math.random() * 42),
         bg: "balloon.png",
         timer: timer - 5
       };
@@ -236,7 +234,7 @@ const PopTheBalloonGame = () => {
             )}
           </div>
         ) : (
-          <div className="bg-white w-[48.5rem] h-[24.5rem] relative rounded-3xl">
+          <div className="bg-white w-[48.5rem] h-[25rem] relative rounded-3xl">
             { letters &&
               letters.map((div, index) => {
                 return (
